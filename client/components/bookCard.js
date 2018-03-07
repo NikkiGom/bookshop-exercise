@@ -1,14 +1,35 @@
 import React from 'react';
 
-const BookCard = (props) => {
-    return(
-        <div style={{padding: '20px'}}>
-            <div>{props.title}</div>
-            <div>{props.author}</div>
-            <div>{props.description}</div>
-            <div>{props.price}</div>
-        </div>
-    );
-}
+export default class BookCard extends React.Component {
+    constructor(props) {
+        super(props);
 
-export default BookCard;
+        this.state = {
+
+        }
+
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick(book) {
+        this.props.goBasket(book)
+    }
+
+    render() {
+        return(
+            <div style={{padding: '20px'}}>
+                <div>{this.props.title}</div>
+                <div>{this.props.author}</div>
+                <div>{this.props.description}</div>
+                <div style={{padding: '20px'}}>{this.props.price}</div>
+                <div 
+                    style={{cursor: 'pointer'}}
+                    onClick={this.handleClick}
+                >
+                    add to basket
+                </div>
+            </div>
+        );
+    }
+} 
+    
